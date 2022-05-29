@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int kthFactor(int n, int k) {
+        vector<int>v;
+        for(int i=1; i<=n; i++){
+            if(n%i==0){
+                v.push_back(i);
+            }
+        }
+        int s=v.size();
+        if(s<k)
+            return -1;
+        else
+            return v[k-1];
+    }
+};
+
+
+
+//Runtime: 4 ms, faster than 29.03% of C++ online submissions for The kth Factor of n.
+//Memory Usage: 6.2 MB, less than 15.87% of C++ online submissions for The kth Factor of n.
