@@ -1,0 +1,40 @@
+Question : 
+
+Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
+Input: head = [1,1,2]
+Output: [1,2]
+Input: head = [1,1,2,3,3]
+Output: [1,2,3]
+
+Constraints:
+
+The number of nodes in the list is in the range [0, 300].
+-100 <= Node.val <= 100
+The list is guaranteed to be sorted in ascending order.
+
+
+Solution :
+ 
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        //empty list
+        if(head==NULL)
+            return NULL;
+        
+        //Non-empty
+        ListNode* curr = head;
+        while(curr!=NULL){
+            if((curr->next!=NULL) && curr->val==curr->next->val){
+                ListNode* next_next = curr->next->next;
+                ListNode* nodetoDeleteNode = curr->next;
+                delete(nodetoDeleteNode);
+                curr->next = next_next;
+            }
+            else{
+                curr = curr->next;
+            }
+        }
+        return head;
+    }
+};
